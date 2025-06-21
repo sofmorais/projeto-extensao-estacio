@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useLogs } from '../../src/hooks/useLogs';
+import { useLogs } from '../../src/contexts/LogsContext';
 import { api } from '../../src/services/api';
 import { Produto } from '../../src/types/produto';
 
 export default function HomeScreen() {
-  const { adicionarLog } = useLogs();
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [nome, setNome] = useState('');
   const [qtd, setQtd] = useState('');
   const [qtdsRemover, setQtdsRemover] = useState<Record<number, string>>({}); // Novo estado para armazenar as quantidades a remover por id
+  const { adicionarLog } = useLogs();
 
   const carregar = async () => {
     try {

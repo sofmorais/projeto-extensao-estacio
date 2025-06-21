@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useLogs } from '../../src/hooks/useLogs';
+import { useLogs } from '../../src/contexts/LogsContext';
 
 export default function TabTwoScreen() {
   const { logs } = useLogs();
@@ -17,6 +17,7 @@ export default function TabTwoScreen() {
             </Text>
           </View>
         )}
+        ListEmptyComponent={<Text style={styles.empty}>Nenhuma ação registrada ainda.</Text>}
       />
     </View>
   );
@@ -30,5 +31,11 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
-  }
+  },
+  empty: {
+    textAlign: 'center',
+    marginTop: 20,
+    fontStyle: 'italic',
+    color: '#888',
+  },
 });
